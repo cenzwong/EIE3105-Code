@@ -1,0 +1,26 @@
+/*
+	******DRV8834 Dual-Bridge Stepper or DC Motor Driver****
+	The motor driver is drv8835 Stepper Motor Controller IC
+	DataSheet: http://www.ti.com/lit/ds/symlink/drv8834.pdf
+	Connection port is Red Black Red Black from the outside
+	
+	M1		APHASE	BPHASE		RWHEEL		LWHEEL
+	1		1		1			Forward		Forward
+	1		1		0			Forward		Backward
+	1		0		1			Backward	Forward
+	1		0		0			Backward	Backward
+	0		1		1			Forward		Forward (with slower speed??)
+	..................
+	0		0		0
+
+	From the IC STM32f103C8T6
+	STM-----PIN---------PINonDRIVER-----NUM
+	PA6		AENBL		nENBL/AENBL		10
+	PA7		BENBL		STEP/BENBL		11
+	PC15	APHASE		M0/APHASE		13
+	PA0		BPHASE		DIR/BPHASE		12
+	PC14	M1			M1				14
+
+Cenz: I will use M1 to enable the slow move mode
+PS: but if M1 is zero, the speed can still as high as not enable: what it is use for?	
+*/
